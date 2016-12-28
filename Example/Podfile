@@ -1,0 +1,17 @@
+source 'https://github.com/ipapamagic/IPaPods.git'
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '9.3'
+use_frameworks!
+target 'IPaImageURLLoader_Tests' do
+  pod 'IPaImageURLLoader', :path => '../'
+  
+  
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['SWIFT_VERSION'] = '3.0'
+    end
+  end
+end
