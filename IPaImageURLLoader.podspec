@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'IPa Chen' => 'ipapamagic@gmail.com' }
-  s.source           = { :git => 'https://github.com/ipapamagic/IPaImageURLLoader.git', :tag => 'v1.0' }
+  s.source           = { :git => 'https://github.com/ipapamagic/IPaImageURLLoader.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '9.3'
@@ -38,5 +38,5 @@ Pod::Spec.new do |s|
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
   s.dependency 'IDZSwiftCommonCrypto', '~> 0.9.0'
-
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
 end
