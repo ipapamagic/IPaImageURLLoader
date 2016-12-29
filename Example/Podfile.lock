@@ -1,7 +1,5 @@
 PODS:
-  - IDZSwiftCommonCrypto (0.9.0)
-  - IPaImageURLLoader (0.1.0):
-    - IDZSwiftCommonCrypto (~> 0.9.0)
+  - IPaImageURLLoader (1.0)
 
 DEPENDENCIES:
   - IPaImageURLLoader (from `../`)
@@ -11,8 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  IDZSwiftCommonCrypto: 60f14492730da20117ce5875b890c7a6fc38ab8c
-  IPaImageURLLoader: d32dba35bdce5b4be0e484723a5fec5c49af6b5b
+  IPaImageURLLoader: 4a54bc75f3398778b2a8c41ee6dd913a8e4e8a4d
 
 PODFILE CHECKSUM: bbd6496ffaa27f733435beec999de20b64dfa2e2
 

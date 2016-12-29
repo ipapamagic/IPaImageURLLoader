@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import IDZSwiftCommonCrypto
+import IPaSecurity
 let IPA_NOTIFICATION_IMAGE_LOADED = "IPA_NOTIFICATION_IMAGE_LOADED"
 let IPA_NOTIFICATION_KEY_IMAGEFILEURL = "IPA_NOTIFICATION_KEY_IMAGEFILEURL"
 let IPA_NOTIFICATION_KEY_IMAGEID = "IPA_NOTIFICATION_KEY_IMAGEID"
@@ -228,10 +228,8 @@ let IPA_IMAEG_LOADER_MAX_CONCURRENT_NUMBER = 3
     }
     public func getCacheFilePath(loader:IPaImageURLLoader,imageID:String) -> String
     {
-        var md5s2 : Digest = Digest(algorithm:.md5)
-        md5s2.update(string: imageID)
-        let digests2 = md5s2.final()
-        let filePath = (cachePath as NSString).appendingPathComponent("\(hexString(fromArray: digests2))")
+        
+        let filePath = (cachePath as NSString).appendingPathComponent("\(imageID.md5String!)")
         return filePath;
     }
     public func modifyImage(loader:IPaImageURLLoader,originalImageFileURL:URL?,imageID:String) -> UIImage?
