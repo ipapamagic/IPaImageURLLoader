@@ -1,5 +1,9 @@
 PODS:
-  - IPaImageURLLoader (1.0)
+  - IPaImageURLLoader (1.0):
+    - IPaSecurity
+  - IPaLog (1.0)
+  - IPaSecurity (1.0):
+    - IPaLog
 
 DEPENDENCIES:
   - IPaImageURLLoader (from `../`)
@@ -9,8 +13,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  IPaImageURLLoader: 4a54bc75f3398778b2a8c41ee6dd913a8e4e8a4d
+  IPaImageURLLoader: 6c0e64c418bb4828191bb40551f2a0007824038c
+  IPaLog: 199e39af2831b48f83967747cadd00bbf505a103
+  IPaSecurity: b16209d6c07ab8be902bf3cedd6de89285fa0418
 
-PODFILE CHECKSUM: bbd6496ffaa27f733435beec999de20b64dfa2e2
+PODFILE CHECKSUM: 4b2163f2d3f06a0211800e962399abe86fd9d8a1
 
 COCOAPODS: 1.1.1

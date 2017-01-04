@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import IPaSecurity
 let IPA_NOTIFICATION_IMAGE_LOADED = "IPA_NOTIFICATION_IMAGE_LOADED"
+let IPA_NOTIFICATION_IMAGE_LOAD_FAIL = "IPA_NOTIFICATION_IMAGE_LOAD_FAIL"
 let IPA_NOTIFICATION_KEY_IMAGEFILEURL = "IPA_NOTIFICATION_KEY_IMAGEFILEURL"
 let IPA_NOTIFICATION_KEY_IMAGEID = "IPA_NOTIFICATION_KEY_IMAGEID"
 let IPA_IMAEG_LOADER_MAX_CONCURRENT_NUMBER = 3
@@ -21,9 +22,10 @@ let IPA_IMAEG_LOADER_MAX_CONCURRENT_NUMBER = 3
     func getCacheFilePath(loader:IPaImageURLLoader,imageID:String) -> String
     func modifyImage(loader:IPaImageURLLoader,originalImageFileURL:URL?,imageID:String) -> UIImage?
 }
-@objc open class IPaImageURLLoader :NSObject,IPaImageURLLoaderDelegate {
-    static let sharedInstance = IPaImageURLLoader()
+@objc open class IPaImageURLLoader :NSObject,IPaImageURLLoaderDelegate,IPaImageURLBlockHandlerDelegate {
+    static public let sharedInstance = IPaImageURLLoader()
     let operationQueue = OperationQueue()
+    var blockHandlers = [IPaImageURLBlockHandler]()
     open weak var delegate:IPaImageURLLoaderDelegate!
     lazy var session:URLSession = URLSession(configuration: URLSessionConfiguration.default)
     var cachePath:String
@@ -88,6 +90,21 @@ let IPA_IMAEG_LOADER_MAX_CONCURRENT_NUMBER = 3
         
         
         return nil
+    }
+    open func loadImage(url:String,handler:@escaping (UIImage?) -> ()) {
+        
+        if let image = cacheWithImageID(url) {
+            handler(image)
+            return
+        }
+        
+        let blockHandler = IPaImageURLBlockHandler(imageURL: url, block: handler)
+        blockHandler.delegate = self
+        blockHandlers.append(blockHandler)
+        doLoadImage(url: url, imageID: url)
+        
+        
+        
     }
     func doLoadImage(url:String,imageID:String) {
         
@@ -181,7 +198,12 @@ let IPA_IMAEG_LOADER_MAX_CONCURRENT_NUMBER = 3
                     
                     })
                 }
-                
+                else {
+                    DispatchQueue.main.async(execute: {
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: IPA_NOTIFICATION_IMAGE_LOAD_FAIL), object: nil, userInfo: [IPA_NOTIFICATION_KEY_IMAGEID:imageID])
+                    })
+                    
+                }
                 
                 
             }
@@ -214,7 +236,12 @@ let IPA_IMAEG_LOADER_MAX_CONCURRENT_NUMBER = 3
         operationQueue.cancelAllOperations()
     }
 
-
+//MARK :IPaImageURLBlockHandlerDelegate
+    func onHandlerComplete(handler: IPaImageURLBlockHandler) {
+        if let index = blockHandlers.index(of: handler) {
+            blockHandlers.remove(at: index)
+        }
+    }
     
 // MARK:IPaImageURLLoaderDelegate
 
