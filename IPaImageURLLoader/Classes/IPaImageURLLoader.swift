@@ -232,7 +232,7 @@ let IPA_IMAEG_LOADER_MAX_CONCURRENT_NUMBER = 3
         }
     
     }
-    func cancelAllOperation (){
+    open func cancelAllOperation (){
         operationQueue.cancelAllOperations()
     }
 

@@ -8,11 +8,11 @@
 
 import Foundation
 import UIKit
-public class IPaImageURLButton : UIButton {
+@objc open class IPaImageURLButton : UIButton {
     private var _imageURL:String?
     private var _backgroundImageURL:String?
     private var imageObserver:NSObjectProtocol?
-    public var imageURL:String? {
+    open var imageURL:String? {
         get {
             return _imageURL
         }
@@ -20,7 +20,7 @@ public class IPaImageURLButton : UIButton {
             setImageURL(newValue, defaultImage: nil)
         }
     }
-    public var backgroundImageURL:String? {
+    open var backgroundImageURL:String? {
         get {
             return _backgroundImageURL
         }
@@ -74,7 +74,7 @@ public class IPaImageURLButton : UIButton {
             }
         })
     }
-    public func setImageURL(_ imageURL:String?,defaultImage:UIImage?) {
+    open func setImageURL(_ imageURL:String?,defaultImage:UIImage?) {
         createImageObserver()
         _imageURL = imageURL
         var image:UIImage?
@@ -85,7 +85,7 @@ public class IPaImageURLButton : UIButton {
         
         setImage((image == nil) ? defaultImage :image, for: .normal)
     }
-    public func setBackgroundImageURL(_ imageURL:String?,defaultImage:UIImage?) {
+    open func setBackgroundImageURL(_ imageURL:String?,defaultImage:UIImage?) {
         createImageObserver()
         _backgroundImageURL = imageURL
         var image:UIImage?
