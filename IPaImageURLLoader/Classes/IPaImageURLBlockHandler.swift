@@ -15,14 +15,19 @@ class IPaImageURLBlockHandler: NSObject {
     var delegate:IPaImageURLBlockHandlerDelegate!
     fileprivate var completeBlock:(UIImage?) -> ()
     var imageURL:String
+    var imageID:String
     fileprivate var imageObserver:NSObjectProtocol?
     fileprivate var failObserver:NSObjectProtocol?
-    init(imageURL:String,block:@escaping (UIImage?) -> ()) {
+    convenience init(imageURL:String,block:@escaping (UIImage?) -> ()) {
+        self.init(imageURL: imageURL, imageID: imageURL, block: block)
+    }
+    init(imageURL:String,imageID:String,block:@escaping (UIImage?) -> ()) {
         
         self.imageURL = imageURL
+        self.imageID = imageID
         self.completeBlock = block
         super.init()
-        if let image = IPaImageURLLoader.sharedInstance.loadImage(url: (imageURL as NSString).addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!, imageID: imageURL)
+        if let image = IPaImageURLLoader.sharedInstance.loadImage(url: (imageURL as NSString).addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!, imageID: imageID)
         {
             completeBlock(image)
         }
@@ -56,7 +61,7 @@ class IPaImageURLBlockHandler: NSObject {
             
             if let userInfo = (noti as NSNotification).userInfo {
                 let imageID = userInfo[IPA_NOTIFICATION_KEY_IMAGEID] as! String
-                if imageID == self.imageURL {
+                if imageID == self.imageID {
                     if let data = try? Data(contentsOf: userInfo[IPA_NOTIFICATION_KEY_IMAGEFILEURL] as! URL ) {
                         
                         self.completeBlock(UIImage(data: data))

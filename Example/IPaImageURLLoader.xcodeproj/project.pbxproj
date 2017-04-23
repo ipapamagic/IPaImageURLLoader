@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		BC2F8D4FFC49B6900A05920B /* Pods_IPaImageURLLoader_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F7FBC436ADBAE0342E85761 /* Pods_IPaImageURLLoader_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -133,6 +132,7 @@
 				TargetAttributes = {
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 86ED7BG2R4;
 						LastSwiftMigration = 0820;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -219,7 +219,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +316,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C64FD780977BCD20C2A4BB95 /* Pods-IPaImageURLLoader_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 86ED7BG2R4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -337,6 +337,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C2A45087B29D438F78F4461 /* Pods-IPaImageURLLoader_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 86ED7BG2R4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

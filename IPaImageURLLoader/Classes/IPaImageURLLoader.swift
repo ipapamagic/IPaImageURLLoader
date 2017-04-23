@@ -91,20 +91,20 @@ let IPA_IMAEG_LOADER_MAX_CONCURRENT_NUMBER = 3
         
         return nil
     }
-    open func loadImage(url:String,handler:@escaping (UIImage?) -> ()) {
-        
-        if let image = cacheWithImageID(url) {
+    open func loadImage(url:String,imageID:String,handler:@escaping (UIImage?) -> ()) {
+        if let image = cacheWithImageID(imageID) {
             handler(image)
             return
         }
-        
-        let blockHandler = IPaImageURLBlockHandler(imageURL: url, block: handler)
+        let blockHandler = IPaImageURLBlockHandler(imageURL: url,imageID:imageID, block: handler)
         blockHandler.delegate = self
         blockHandlers.append(blockHandler)
-        doLoadImage(url: url, imageID: url)
+        doLoadImage(url: url, imageID: imageID)
         
         
-        
+    }
+    open func loadImage(url:String,handler:@escaping (UIImage?) -> ()) {
+        self.loadImage(url: url, imageID: url, handler: handler)
     }
     func doLoadImage(url:String,imageID:String) {
         
