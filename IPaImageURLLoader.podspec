@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'IPaImageURLLoader'
-  s.version          = '1.3'
+  s.version          = '1.4'
   s.summary          = 'Easy loading Image with url management,can cache Image, and support photo kit'
 
 # This description is used to generate tags and improve search results.
