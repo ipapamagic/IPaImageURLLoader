@@ -27,6 +27,7 @@ class IPaImageURLBlockHandler: NSObject {
         self.imageID = imageID
         self.completeBlock = block
         super.init()
+        createImageObserver()
         if let image = IPaImageURLLoader.sharedInstance.loadImage(url: (imageURL as NSString).addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!, imageID: imageID)
         {
             completeBlock(image)

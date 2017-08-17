@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import IPaLog
 @objc class IPaImageURLOperation : Operation {
     var loadedImageFileURL:URL?
     let imageID:String
@@ -49,6 +50,7 @@ import Foundation
         task = session?.downloadTask(with: request, completionHandler: {(location,response,error) in
             if error == nil {
                 if self.isCancelled {
+                    IPaLog("IPaImageURLOperation:isCancelled")
                     return
                 }
                 guard let location = location else {
@@ -66,6 +68,11 @@ import Foundation
                     fatalError()
                 }
                 self.loadedImageFileURL = toURL
+            }
+            else {
+                
+                IPaLog(error.debugDescription)
+                
             }
             self.willChangeValue(forKey: "isExecuting")
             self.isFinished = true

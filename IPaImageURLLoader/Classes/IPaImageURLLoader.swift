@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import IPaSecurity
+import IPaLog
 let IPA_NOTIFICATION_IMAGE_LOADED = "IPA_NOTIFICATION_IMAGE_LOADED"
 let IPA_NOTIFICATION_IMAGE_LOAD_FAIL = "IPA_NOTIFICATION_IMAGE_LOAD_FAIL"
 let IPA_NOTIFICATION_KEY_IMAGEFILEURL = "IPA_NOTIFICATION_KEY_IMAGEFILEURL"
@@ -147,8 +148,8 @@ let IPA_IMAEG_LOADER_MAX_CONCURRENT_NUMBER = 3
                     do {
                         try data.write(to: pathURL)
                     }
-                    catch {
-                        
+                    catch let e as NSError{
+                        IPaLog(e.debugDescription)
                     }
                     
                     
@@ -181,8 +182,8 @@ let IPA_IMAEG_LOADER_MAX_CONCURRENT_NUMBER = 3
                             }
                             try fileManager.copyItem(at: imageURL, to:(URL(fileURLWithPath:path)))
 
-                        } catch _ as NSError {
-                            
+                        } catch let error as NSError {
+                            IPaLog(error.debugDescription)
                             return
                         } catch {
                             fatalError()
@@ -192,7 +193,6 @@ let IPA_IMAEG_LOADER_MAX_CONCURRENT_NUMBER = 3
                     }
                     DispatchQueue.main.async(execute: {
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: IPA_NOTIFICATION_IMAGE_LOADED), object: nil, userInfo: [IPA_NOTIFICATION_KEY_IMAGEFILEURL:imageURL,IPA_NOTIFICATION_KEY_IMAGEID:imageID])
-                        
                         self.delegate.onIPaImageURLLoader(loader: self, imageID: imageID, imageFileURL: imageURL)
                         
                     
