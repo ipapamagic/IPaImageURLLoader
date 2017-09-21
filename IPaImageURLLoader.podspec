@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'IPaImageURLLoader'
-  s.version          = '1.5.1'
+  s.version          = '2.0'
   s.summary          = 'Easy loading Image with url management,can cache Image, and support photo kit'
 
 # This description is used to generate tags and improve search results.
@@ -37,5 +37,5 @@ Pod::Spec.new do |s|
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'IPaSecurity'
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.0' }
 end
