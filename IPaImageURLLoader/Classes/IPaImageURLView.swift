@@ -12,7 +12,7 @@ import UIKit
     fileprivate var _imageURL:String?
     fileprivate var _highlightedImageURL:String?
     fileprivate var imageObserver:NSObjectProtocol?
-    open var imageURL:String? {
+    @objc open var imageURL:String? {
         get {
             return _imageURL
         }
@@ -20,7 +20,7 @@ import UIKit
             setImageURL(newValue, defaultImage: nil)
         }
     }
-    open var highlightedImageURL:String? {
+    @objc open var highlightedImageURL:String? {
         get {
             return _highlightedImageURL
         }
@@ -60,7 +60,7 @@ import UIKit
             }
         })
     }
-    open func setImageURL(_ imageURL:String?,defaultImage:UIImage?) {
+    @objc open func setImageURL(_ imageURL:String?,defaultImage:UIImage?) {
         createImageObserver()
         _imageURL = imageURL
         var image:UIImage?
@@ -70,7 +70,7 @@ import UIKit
         }
         self.image = (image == nil) ? defaultImage :image
     }
-    open func setHighlightedImageURL(_ imageURL:String?,defaultImage:UIImage?) {
+    @objc open func setHighlightedImageURL(_ imageURL:String?,defaultImage:UIImage?) {
         createImageObserver()
         _highlightedImageURL = imageURL
         var image:UIImage?

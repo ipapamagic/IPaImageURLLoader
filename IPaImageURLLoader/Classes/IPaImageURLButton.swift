@@ -12,7 +12,7 @@ import UIKit
     private var _imageURL:String?
     private var _backgroundImageURL:String?
     private var imageObserver:NSObjectProtocol?
-    open var imageURL:String? {
+    @objc open var imageURL:String? {
         get {
             return _imageURL
         }
@@ -20,7 +20,7 @@ import UIKit
             setImageURL(newValue, defaultImage: nil)
         }
     }
-    open var backgroundImageURL:String? {
+    @objc open var backgroundImageURL:String? {
         get {
             return _backgroundImageURL
         }
@@ -74,7 +74,7 @@ import UIKit
             }
         })
     }
-    open func setImageURL(_ imageURL:String?,defaultImage:UIImage?) {
+    @objc open func setImageURL(_ imageURL:String?,defaultImage:UIImage?) {
         createImageObserver()
         _imageURL = imageURL
         var image:UIImage?
@@ -85,7 +85,7 @@ import UIKit
         
         setImage((image == nil) ? defaultImage :image, for: .normal)
     }
-    open func setBackgroundImageURL(_ imageURL:String?,defaultImage:UIImage?) {
+    @objc open func setBackgroundImageURL(_ imageURL:String?,defaultImage:UIImage?) {
         createImageObserver()
         _backgroundImageURL = imageURL
         var image:UIImage?
