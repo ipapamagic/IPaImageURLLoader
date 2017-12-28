@@ -8,7 +8,8 @@
 
 import Foundation
 import UIKit
-@objc open class IPaImageURLView : UIImageView {
+import IPaDesignableUI
+@objc open class IPaImageURLView : IPaDesignableImageView {
     fileprivate var _imageURL:String?
     fileprivate var _highlightedImageURL:String?
     fileprivate var imageObserver:NSObjectProtocol?

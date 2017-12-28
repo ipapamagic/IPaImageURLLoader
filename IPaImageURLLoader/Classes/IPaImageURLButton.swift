@@ -8,7 +8,8 @@
 
 import Foundation
 import UIKit
-@objc open class IPaImageURLButton : UIButton {
+import IPaDesignableUI
+@objc open class IPaImageURLButton : IPaDesignableButton {
     private var _imageURL:String?
     private var _backgroundImageURL:String?
     private var imageObserver:NSObjectProtocol?
