@@ -8,9 +8,9 @@
 
 Pod::Spec.new do |s|
   s.name             = 'IPaImageURLLoader'
-  s.version          = '2.1'
+  s.version          = '2.2'
   s.summary          = 'Easy loading Image with url management,can cache Image, and support photo kit'
-
+  s.swift_version    = '4.1'
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
 #   * Try to keep it short, snappy and to the point.
@@ -37,9 +37,6 @@ Pod::Spec.new do |s|
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'IPaSecurity'
-  s.dependency 'IPaDesignableUI', '>= 2.2'
-  s.xcconfig = {
-    "SWIFT_VERSION" => "4.0",
-    "SWIFT_SWIFT3_OBJC_INFERENCE" => "off"
-  }
+  s.dependency 'IPaDesignableUI', '>= 2.5'
+
 end
