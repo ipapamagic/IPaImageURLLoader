@@ -1,25 +1,31 @@
 PODS:
-  - IPaDesignableUI (2.2)
-  - IPaImageURLLoader (2.1):
-    - IPaDesignableUI (>= 2.2)
+  - IPaDesignableUI (2.6)
+  - IPaImageURLLoader (2.3):
+    - IPaDesignableUI (>= 2.5)
     - IPaSecurity
-  - IPaLog (2.0)
-  - IPaSecurity (2.0):
-    - IPaLog
+  - IPaLog (2.2)
+  - IPaSecurity (2.3):
+    - IPaLog (>= 2.1)
 
 DEPENDENCIES:
   - IPaImageURLLoader (from `../`)
 
+SPEC REPOS:
+  https://github.com/ipapamagic/IPaPods.git:
+    - IPaDesignableUI
+    - IPaLog
+    - IPaSecurity
+
 EXTERNAL SOURCES:
   IPaImageURLLoader:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  IPaDesignableUI: 3d5964e24a22f7d3c47394a60df06b652162f178
-  IPaImageURLLoader: 348acb6c67e4bce153b32020991d277c2ccb23bb
-  IPaLog: acabecf56d0eee83490665dce601c24da4860ea1
-  IPaSecurity: 09a2912ee69ba8f50c55380b57329ee1218988bd
+  IPaDesignableUI: 57e3e84e1a3ab6532b1a496bc6491ac10006ed34
+  IPaImageURLLoader: 80ac7f1b7c1151f96e96b66cb8d6814b92fba6e1
+  IPaLog: 79b3ca1ac6c0ae7e96ea4a73cbb49808451b804b
+  IPaSecurity: ac1986e7f9323f3f81355179f720d18ae89aafd5
 
 PODFILE CHECKSUM: 4b2163f2d3f06a0211800e962399abe86fd9d8a1
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.3
