@@ -142,7 +142,7 @@ let IPA_IMAEG_LOADER_MAX_CONCURRENT_NUMBER = 3
                     
                     var path = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
                     path = (path as NSString).appendingPathComponent("IPaImageCache.imageCache")
-                    let data = UIImagePNGRepresentation(modifyImage)!
+                    let data = modifyImage.pngData()!
                     
                     let pathURL = URL(fileURLWithPath:path)
                     do {
