@@ -13,6 +13,34 @@ import IPaDesignableUI
     fileprivate var _imageURL:String?
     fileprivate var _highlightedImageURL:String?
     fileprivate var imageObserver:NSObjectProtocol?
+    fileprivate var ratioConstraint:NSLayoutConstraint?
+    override open var image: UIImage? {
+        didSet {
+            if let image = image {
+                let ratio = image.size.width / image.size.height
+                if let ratioConstraint = self.ratioConstraint {
+                    if ratioConstraint.multiplier == ratio {
+                        return
+                    }
+                    self.removeConstraint(ratioConstraint)
+                    self.ratioConstraint = nil
+                }
+                let ratioConstraint = NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal, toItem: self, attribute: .height, multiplier: ratio, constant: 0)
+                self.addConstraint(ratioConstraint)
+                ratioConstraint.priority = UILayoutPriority(rawValue: 1)
+                self.ratioConstraint = ratioConstraint
+                
+            }
+            else {
+                if let ratioConstraint = ratioConstraint {
+                    self.removeConstraint(ratioConstraint)
+                    self.ratioConstraint = nil
+                }
+                
+            }
+            
+        }
+    }
     @objc open var imageURL:String? {
         get {
             return _imageURL
