@@ -26,8 +26,9 @@ import IPaDesignableUI
                     self.ratioConstraint = nil
                 }
                 let ratioConstraint = NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal, toItem: self, attribute: .height, multiplier: ratio, constant: 0)
-                self.addConstraint(ratioConstraint)
                 ratioConstraint.priority = UILayoutPriority(rawValue: 1)
+                self.addConstraint(ratioConstraint)
+                
                 self.ratioConstraint = ratioConstraint
                 
             }
