@@ -236,7 +236,7 @@ let IPA_IMAEG_LOADER_MAX_CONCURRENT_NUMBER = 3
 
 //MARK :IPaImageURLBlockHandlerDelegate
     func onHandlerComplete(handler: IPaImageURLBlockHandler) {
-        if let index = blockHandlers.index(of: handler) {
+        if let index = blockHandlers.firstIndex(of: handler) {
             blockHandlers.remove(at: index)
         }
     }
