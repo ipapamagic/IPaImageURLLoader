@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import IPaDesignableUI
+import IPaDownloadManager
 @objc open class IPaImageURLView : IPaDesignableImageView {
     fileprivate var _imageURL:String?
     fileprivate var _highlightedImageURL:String?
